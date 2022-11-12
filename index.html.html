@@ -1,0 +1,673 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Robo-Dawn Elevator</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5c0393f4-4e5a-4eb1-bb57-3b4c2237c319" class="page sans"><header><h1 class="page-title">Robo-Dawn Elevator</h1></header><div class="page-body"><h1 id="d28e2f1b-21da-41b5-8529-d2f1bec8c9ec" class="">Overview</h1><h2 id="e282cfbb-85cc-4319-9e5f-7431562620de" class="">Problem statement</h2><p id="8e8f151f-31a2-45e6-a0eb-5c35502f75c4" class="block-color-gray">The robot team needs a Microsoft surface to move up and down giving them the ability for Dawn to come face-to-face with someone or “sit” at a desk. It also has the benefit of temporarily lowering her center of gravity while traveling across the office.</p><h2 id="19c022a6-77ef-439c-8a64-d4cc9cad927c" class="">Proposed work</h2><p id="db0ba329-a593-428a-8bb9-cf2503915e3d" class="block-color-gray">Build an elevator with a carriage that raises and lowers using a motor that is fixed at the base (keeps CoM low) and ideally does not require a cascading (complicated) lift system. I believe that a traversing carriage attached to a fixed pole can have a CoM almost as low as a fully retracted cascading lift system.</p><h1 id="99974de7-8040-4fed-8463-9dc4114779df" class="">Success criteria</h1><ul id="6773c01d-0783-4381-90f5-0325a6749b2c" class="bulleted-list"><li style="list-style-type:disc">Moves quickly up and down (2 seconds bottom to top)</li></ul><ul id="86102273-6dac-4b99-ab4c-3bd2bee39568" class="bulleted-list"><li style="list-style-type:disc">Maintains a low CoM (doesn’t tip while retracted)</li></ul><h1 id="7fb0a714-5424-4955-979a-fcf12614e7cd" class="">User stories</h1><h2 id="8dbe1f96-89a9-470c-88d1-00e3c38c38f6" class="">Raises MS to eye level when talking to a standing person</h2><h2 id="86f1315c-707d-4222-870b-23e0a014fc0d" class="">Lowers to eye level when talking to a sitting person</h2><h2 id="53863d97-a32b-4085-9627-bddb0557ef57" class="">Lowers to screen level when looking at a desktop computer</h2><h2 id="ac726fe1-b239-4b5e-a44d-01e3e0f1900f" class="">Hides by lowering into a protected box when traveling long distance</h2><h1 id="8954844f-c239-4daa-ab3f-6d87762ecac7" class="">Scope</h1><h2 id="f11addfb-5c2e-457f-9c3f-c74922c6ff5f" class="">Requirements</h2><p id="5973f5b6-3f79-4f89-88e3-eef9c6b64805" class="block-color-gray">Current project requirements.</p><ul id="675dd5a4-8e79-4e71-8c63-4e1c0561b41c" class="bulleted-list"><li style="list-style-type:disc">The overall system must be lightweight </li></ul><ul id="35740e88-608c-4d66-86d1-e7964b1f1202" class="bulleted-list"><li style="list-style-type:disc">The motor must be able to lift a Microsoft surface, against friction</li></ul><ul id="204a814a-d715-4696-8792-70fc10b059d8" class="bulleted-list"><li style="list-style-type:disc">The overall system should not raise the CoM to a point of tipping concern at walking speeds/accelerations</li></ul><h1 id="68e35bb0-8f70-4221-89fd-51343a929e39" class="">Alternatives considered: Cascading vs. Fixed Pole</h1><h2 id="672c206e-28e6-4346-a5a3-6a666d227399" class="">Cascading Mechanisms</h2><div id="0077b559-f3b9-499e-92f8-ccdf96c9b450" class="column-list"><div id="2617cd86-bd71-48ba-bc22-88b5554ad9f1" style="width:20.833333333333332%" class="column"><figure id="2536f368-c46a-4e47-8f3c-555eb8deeab1" class="image"><a href="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled.png"><img style="width:192px" src="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled.png"/></a></figure></div><div id="790c2a86-1efd-4b78-b770-f09f30817593" style="width:33.33333333333333%" class="column"><figure id="6ec4b4b3-4f47-41a6-8b45-5d483c99a7d8" class="image"><a href="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled%201.png"><img style="width:598px" src="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled%201.png"/></a></figure></div><div id="d45e6822-a01c-42af-8c81-b196e3511808" style="width:45.833333333333336%" class="column"><figure id="aa53704d-cd1f-4479-abfb-0e495b301173" class="image"><a href="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled%202.png"><img style="width:336px" src="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled%202.png"/></a></figure></div></div><p id="6803e756-54f9-48b2-878a-50b4c668b70a" class="">
+</p><p id="dfbcb424-aa15-4579-b49e-2920c15bcb54" class="">Unfortunately, all of these mechanisms have a mechanical complexity that (1) makes it difficult to design, manufacture, assemble, and maintain and (2) have mechanical complexity that requires stiffer and more complicated parts higher up, which pushes their CoM higher than theoretical possible with a cascading system and increase the overall weight. </p><h1 id="8c3f6128-4110-4919-b15d-6a549c80dcb0" class="">Favorite Design: Fixed Pole(s) + Carriage</h1><p id="bde2c7f4-cec3-42f4-8d4e-470d2d2dd093" class="">CAD Files: <a href="https://rosehulman-my.sharepoint.com/:f:/g/personal/oblaznjc_rose-hulman_edu/EjtOgPFGw5BDm4qd7nAPpMkBGfaOhUoqysDQDY8jNse13Q?e=QtacBv">https://rosehulman-my.sharepoint.com/:f:/g/personal/oblaznjc_rose-hulman_edu/EjtOgPFGw5BDm4qd7nAPpMkBGfaOhUoqysDQDY8jNse13Q?e=QtacBv</a></p><figure id="f0f68fea-9461-494e-a37b-3cf734f801b5"><div class="source">https://rosehulman-my.sharepoint.com/:f:/g/personal/oblaznjc_rose-hulman_edu/EjtOgPFGw5BDm4qd7nAPpMkBGfaOhUoqysDQDY8jNse13Q?e=QtacBv</div></figure><div id="431d9509-7331-41b7-806c-b09e24000bba" class="column-list"><div id="a590fe37-e032-4888-aa0b-d3e3d3ba5ba8" style="width:25%" class="column"><figure id="0cd7964c-8b34-49a0-b836-0e957a4d2c93" class="image"><a href="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled%203.png"><img style="width:144px" src="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled%203.png"/></a><figcaption>Full-Scale Model (6ft Tall)</figcaption></figure></div><div id="fde9ed90-242a-430b-bc35-084752803d86" style="width:75%" class="column"><figure id="57128e30-1e80-4c8e-802d-b72577f3d2e9" class="image"><a href="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled%204.png"><img style="width:528px" src="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled%204.png"/></a></figure></div></div><ul id="e76b959f-167c-4311-9f39-41def2a8df87" class="bulleted-list"><li style="list-style-type:disc">The carriage moves up as the motor turns the spool, taking in the cable/rope</li></ul><ul id="fa21fbef-9353-4b69-aaae-6b29c200eb7c" class="bulleted-list"><li style="list-style-type:disc">The carriage moves down using gravity as the motor unspools the cable<ul id="e0882d73-f5e0-4165-b9c0-a448c6356fc3" class="bulleted-list"><li style="list-style-type:circle">If it gets caught on the way down you may need to use bearings  (see alternative mounting image below)</li></ul><figure id="681a6fd1-8c77-40be-af86-7a1df119f502" class="image"><a href="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled%205.png"><img style="width:336px" src="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled%205.png"/></a><figcaption>Alternative Mounting to Circular Tubing: alignment system: curved roller with a circular lightweight tube to keep the carriage aligned. <a href="https://youtu.be/myO8fxhDRW0?list=PLgFM5yHV8_w0Us5y_5GpJC7E12mLcBQUI&amp;t=96">https://youtu.be/myO8fxhDRW0?list=PLgFM5yHV8_w0Us5y_5GpJC7E12mLcBQUI&amp;t=96</a> </figcaption></figure><ul id="a253dfb5-6c42-4e58-a720-b44e77126514" class="bulleted-list"><li style="list-style-type:circle">Or a constant force spring to pull it down: <a href="https://www.mcmaster.com/9293K14/">https://www.mcmaster.com/9293K14/</a> </li></ul><figure id="2a50b610-c534-475d-a79d-280475ba5584" class="image"><a href="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled%206.png"><img style="width:240px" src="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled%206.png"/></a></figure></li></ul><ul id="a6e8f423-be13-49c7-99e8-34b584b7f057" class="bulleted-list"><li style="list-style-type:disc">You might actually be able to find a way to use the power cables as this cable if you do it carefully. It would be super cool if you could pull that off and I’m sure there are some examples online</li></ul><ul id="9913520c-5daa-4c35-a37d-ffb6d1ab4292" class="bulleted-list"><li style="list-style-type:disc">Alternatively use one of these stretchy cables and hang it in front<ul id="7c0184c1-755d-41fb-b99c-09006067371b" class="bulleted-list"><li style="list-style-type:circle">Bonus (it might work to replace a constant force spring if necessary)</li></ul></li></ul><p id="e1c51208-6b7e-4434-a8a4-adbecb2d796b" class="">
+</p><figure id="ef4427d4-3116-4970-bd93-fb53ff21d531" class="image"><a href="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled%207.png"><img style="width:240px" src="Robo-Dawn%20Elevator%205c0393f44e5a4eb1bb573b4c2237c319/Untitled%207.png"/></a></figure><p id="ef77d26d-5ecc-4689-b1c0-ffdce1a0b9dd" class="">
+</p><p id="83ad8705-8c35-486b-9096-c18b13ff794f" class="">
+</p><h1 id="76e2ba93-0a0e-421a-80e2-113622da3cb3" class="">Related documents</h1><p id="55c564af-f44f-4f6a-a27b-58f07aa0252d" class="">Learn more about cascading mechanisms in the slides linked below:</p><figure id="afffd6e6-e5e8-43ae-8a22-54112f4b3a9c"><a href="https://slideplayer.com/slide/12277780/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">VEX Lifts (Devices that extend upwards) - ppt download</div><div class="bookmark-description">Presentation is loading. Please wait. To make this website work, we log user data and share it with processors. To use this website, you must agree to our Privacy Policy, including cookie policy. I agree.</div></div><div class="bookmark-href"><img src="https://slideplayer.com/favicon.ico" class="icon bookmark-icon"/>https://slideplayer.com/slide/12277780/</div></div><img src="https://slideplayer.com/slide/12277780/72/images/1/VEX+Lifts+%28Devices+that+extend+upwards%29.jpg" class="bookmark-image"/></a></figure><figure id="f5210eb3-ab57-462b-882b-0036f13b09b4"><a href="https://www.chiefdelphi.com/t/cascade-elevator-gearing/345099/12" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Cascade Elevator Gearing</div><div class="bookmark-description">My team has our 2-stage cascade elevator built, but we are still hammering out the details of the gearing. We want to use a Cim on a 9:1 versaplanetary together with a 22:15 chain reduction, which is powering a 2.375&quot; diameter PVC drum.</div></div><div class="bookmark-href"><img src="https://www.chiefdelphi.com/uploads/default/optimized/1X/8e74375c59848e271fde74991f61fffd3a63a1fd_2_32x32.png" class="icon bookmark-icon"/>https://www.chiefdelphi.com/t/cascade-elevator-gearing/345099/12</div></div><img src="https://www.chiefdelphi.com/uploads/default/original/1X/8e74375c59848e271fde74991f61fffd3a63a1fd.png" class="bookmark-image"/></a></figure></div></article></body></html>
